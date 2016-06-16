@@ -22,7 +22,8 @@ public class FragmentActivity extends Activity {
                 AnotherRightFragment anotherRightFragment=new AnotherRightFragment();
                 FragmentManager fragmentManager=getFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.right_fragment,anotherRightFragment);
+                transaction.replace(R.id.right_layout,anotherRightFragment);
+                transaction.addToBackStack(null);
                 transaction.commit();
             }
         });
