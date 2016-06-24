@@ -10,14 +10,14 @@
         android:name=".MyApplication"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-
         </activity>
         <activity android:name=".LoginActivity">
+        </activity>
+        <activity android:name=".newsApp.zsn.activity.NewsContentActivity">
         </activity>
         <activity android:name=".FragmentActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

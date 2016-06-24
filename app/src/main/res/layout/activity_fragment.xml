@@ -5,12 +5,17 @@
     android:layout_height="match_parent"
     >
     <fragment
-        android:id="@+id/left_fragment"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:name="com.polycom.polycom.LeftFragment"
-        />
+        android:id="@+id/news_title_fragment"
+        android:name="com.polycom.polycom.newsApp.zsn.fragment.NewsTitleFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <!-- <fragment
+         android:id="@+id/left_fragment"
+         android:layout_width="0dp"
+         android:layout_height="match_parent"
+         android:layout_weight="1"
+         android:name="com.polycom.polycom.LeftFragment"
+         />-->
     <!--<FrameLayout
         android:id="@+id/right_layout"
         android:layout_width="0dp"
