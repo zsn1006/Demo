@@ -81,4 +81,7 @@ public class RightFragment extends Fragment {
         Log.d(TAG, "onDetach");
     }
 
+    //测试git分支
+    //...................
+
 }
