@@ -1,8 +1,8 @@
 package com.polycom.polycom.newsApp.zsn.fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +13,7 @@ import com.polycom.polycom.R;
 /**
  * Created by zsn on 2016/6/24.
  */
-public class NewsContentFragment extends Fragment{
+public class NewsContentFragment extends Fragment {
     private View view;
     @Nullable
     @Override

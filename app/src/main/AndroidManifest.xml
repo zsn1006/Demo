@@ -15,7 +15,7 @@
         </activity>
         <activity android:name=".newsApp.zsn.activity.NewsContentActivity">
         </activity>
-        <activity android:name=".FragmentActivity">
+        <activity android:name=".FraActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
