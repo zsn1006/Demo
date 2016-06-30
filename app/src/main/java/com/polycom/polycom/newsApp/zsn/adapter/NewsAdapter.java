@@ -1,7 +1,6 @@
 package com.polycom.polycom.newsApp.zsn.adapter;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -13,7 +12,7 @@ import com.polycom.polycom.newsApp.zsn.bean.News;
 import java.util.List;
 
 /**
- * Created by Administrator on 2016/6/24.
+ * Created by zsn on 2016/6/24.
  */
 public class NewsAdapter extends ArrayAdapter<News> {
     private int resourceId;
@@ -29,7 +28,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
        News news=getItem(position);
         View view;
         if(convertView==null){
-            view=LayoutInflater.from(mContext).inflate(resourceId,null);
+            view=View.inflate(mContext,resourceId,null);
         }else{
             view=convertView;
         }
