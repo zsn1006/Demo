@@ -30,6 +30,7 @@ public class BroadCastActivity extends Activity {
         registerReceiver(networkChangeReceiver,intentFilter);
         //test git commit
         //..................................................
+<<<<<<< HEAD
         Button sendBroadcast = (Button) findViewById(R.id.send_broadcast);
         //自定义广播
         sendBroadcast.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +40,8 @@ public class BroadCastActivity extends Activity {
                 sendBroadcast(intent);
             }
         });
+=======
+>>>>>>> master
     }
 
     @Override
