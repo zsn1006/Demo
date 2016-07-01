@@ -31,6 +31,12 @@
                     />
             </intent-filter>
         </receiver>
+        <receiver android:name=".broadcastReciver.MyBroadcastReceiver">
+            <intent-filter>
+                <action
+                    android:name="com.polycom.polycom.MY_BROADCAST"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
