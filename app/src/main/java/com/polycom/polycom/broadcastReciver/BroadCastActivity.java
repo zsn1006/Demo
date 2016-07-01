@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.polycom.polycom.R;
 
 /**
- * Created by Administrator on 2016/6/30.
+ * Created by zsn on 2016/6/30.
  */
 public class BroadCastActivity extends Activity {
     private NetworkChangeReceiver networkChangeReceiver;
@@ -26,7 +26,8 @@ public class BroadCastActivity extends Activity {
         intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
         networkChangeReceiver=new NetworkChangeReceiver();
         registerReceiver(networkChangeReceiver,intentFilter);
-
+        //test git commit
+        //..................................................
     }
 
     @Override
