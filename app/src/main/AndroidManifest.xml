@@ -32,9 +32,16 @@
             </intent-filter>
         </receiver>
         <receiver android:name=".broadcastReciver.MyBroadcastReceiver">
-            <intent-filter>
+            <intent-filter android:priority="100">
                 <action
                     android:name="com.polycom.polycom.MY_BROADCAST"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".broadcastReciver.LocalReceiver">
+            <intent-filter android:priority="100">
+                <action
+                    android:name="com.polycom.polycom.LOCAL_BROADCAST"/>
             </intent-filter>
         </receiver>
     </application>
