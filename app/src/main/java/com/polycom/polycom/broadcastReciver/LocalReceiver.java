@@ -6,15 +6,13 @@ import android.content.Intent;
 import android.widget.Toast;
 
 /**
- * 发送标准广播
- * Created by zsn on 2016/7/1.
+ * Created by Administrator on 2016/7/4.
  */
-public class MyBroadcastReceiver extends BroadcastReceiver {
+public class LocalReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String data = intent.getStringExtra("data");
-        Toast.makeText(context, "我的手机号码是："+data,
+        Toast.makeText(context, "LocalReceiver我的手机号码是：" + data,
                 Toast.LENGTH_SHORT).show();
-        abortBroadcast();
     }
 }
