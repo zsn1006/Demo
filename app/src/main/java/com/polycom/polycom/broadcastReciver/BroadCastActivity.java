@@ -20,7 +20,7 @@ import com.polycom.polycom.R;
 public class BroadCastActivity extends Activity {
     private NetworkChangeReceiver networkChangeReceiver;
 
-    @Override
+    @Overridegit
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_broadcast);
