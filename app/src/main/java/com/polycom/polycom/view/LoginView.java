@@ -6,7 +6,7 @@ package com.polycom.polycom.view;
 public interface LoginView {
     void showProgress();
     void hideProgress();
-    void navigateToHome();
     void setUsernameError();
     void setPasswordError();
+    void startNewActivity();
 }

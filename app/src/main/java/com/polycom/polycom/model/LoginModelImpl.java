@@ -27,8 +27,10 @@ public class LoginModelImpl implements LoginModel {
 
                 if(!error){
                     onLoginFinishListener.onSuccess();
+
                 }
             }
         },2000);
     }
+
 }

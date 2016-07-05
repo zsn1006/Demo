@@ -13,14 +13,15 @@
         <activity android:name=".MainActivity">
         </activity>
         <activity android:name=".LoginActivity">
-        </activity>
-        <activity android:name=".newsApp.zsn.activity.NewsContentActivity">
-        </activity>
-        <activity android:name=".broadcastReciver.BroadCastActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".newsApp.zsn.activity.NewsContentActivity">
+        </activity>
+        <activity android:name=".broadcastReciver.BroadCastActivity">
+
         </activity>
         <activity android:name=".FraActivity">
         </activity>
@@ -42,6 +43,11 @@
             <intent-filter android:priority="100">
                 <action
                     android:name="com.polycom.polycom.LOCAL_BROADCAST"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".broadcastReciver.CloseAtyReceiver">
+            <intent-filter>
+                <action android:name="com.polycom.polycom.FORCE_OFFLINE"/>
             </intent-filter>
         </receiver>
     </application>

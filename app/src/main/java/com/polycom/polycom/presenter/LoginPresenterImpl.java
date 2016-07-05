@@ -48,7 +48,8 @@ public class LoginPresenterImpl implements LoginPresenter,OnLoginFinishListener 
     public void onSuccess() {
         if(loginView!=null){
             loginView.hideProgress();
-            loginView.navigateToHome();
+            loginView.startNewActivity();
         }
     }
+
 }

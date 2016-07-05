@@ -1,11 +1,10 @@
 package com.polycom.polycom;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.polycom.polycom.presenter.LoginPresenter;
 import com.polycom.polycom.presenter.LoginPresenterImpl;
@@ -14,7 +13,7 @@ import com.polycom.polycom.view.LoginView;
 /**
  * Created by Administrator on 2016/6/13.
  */
-public class LoginActivity extends Activity implements LoginView,View.OnClickListener {
+public class LoginActivity extends BaseActivity implements LoginView,View.OnClickListener {
     private ProgressBar progressBar;
     private EditText username;
     private EditText password;
@@ -50,11 +49,6 @@ public class LoginActivity extends Activity implements LoginView,View.OnClickLis
     }
 
     @Override
-    public void navigateToHome() {
-        Toast.makeText(this, "login success", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
     public void setUsernameError() {
         username.setError(getString(R.string.username_error));
     }
@@ -62,6 +56,11 @@ public class LoginActivity extends Activity implements LoginView,View.OnClickLis
     @Override
     public void setPasswordError() {
         password.setError(getString(R.string.password_error));
+    }
+
+    @Override
+    public void startNewActivity() {
+       startActivity(new Intent(this,MainActivity.class));
     }
 
     @Override

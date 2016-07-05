@@ -1,7 +1,7 @@
 package com.polycom.polycom;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,18 +10,17 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private ListView msgListView;
     private EditText inputText;
-    private Button send;
+    private Button send,close;
     private MsgAdapter adapter;
     private List<Msg>msgList=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //test github ---zsn
         initMsgs();
         initView();
         initListener();
@@ -46,11 +45,19 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent("com.polycom.polycom.FORCE_OFFLINE");
+                sendBroadcast(intent);
+            }
+        });
     }
 
     private void initView() {
         inputText=(EditText)findViewById(R.id.input_text);
         send=(Button)findViewById(R.id.send);
+        close=(Button)findViewById(R.id.close_all_aty);
         msgListView=(ListView)findViewById(R.id.msg_list_view);
     }
 
