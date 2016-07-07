@@ -20,18 +20,26 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Type something here"
+            android:hint="type"
             android:maxLines="2"/>
         <Button
             android:id="@+id/send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Send"/>
+            android:textSize="12sp"
+            android:text="发送"/>
         <Button
             android:id="@+id/close_all_aty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="closeAty"/>
+            android:textSize="12sp"
+            android:text="关闭"/>
+        <Button
+            android:id="@+id/save_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:text="保存"/>
 
     </LinearLayout>
 </LinearLayout>

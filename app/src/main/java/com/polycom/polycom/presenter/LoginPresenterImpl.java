@@ -1,5 +1,7 @@
 package com.polycom.polycom.presenter;
 
+import android.content.SharedPreferences;
+
 import com.polycom.polycom.OnLoginFinishListener;
 import com.polycom.polycom.model.LoginModel;
 import com.polycom.polycom.model.LoginModelImpl;
@@ -15,17 +17,23 @@ public class LoginPresenterImpl implements LoginPresenter,OnLoginFinishListener 
        this.loginView=loginView;
        this.loginModel=new LoginModelImpl();
    }
+
     @Override
-    public void validateCredentials(String userName, String pwd) {
+    public void validateCredentials(String userName, String pwd, boolean checked,SharedPreferences pref) {
         if(loginView!=null){
             loginView.showProgress();
         }
-        loginModel.login(userName,pwd,this);
+        loginModel.login(userName,pwd,checked,pref,this);
     }
 
     @Override
     public void onDestroy() {
         loginView=null;
+    }
+
+    @Override
+    public void getSP(SharedPreferences pref) {
+        loginModel.getSPData(pref,this);
     }
 
     @Override
@@ -49,6 +57,27 @@ public class LoginPresenterImpl implements LoginPresenter,OnLoginFinishListener 
         if(loginView!=null){
             loginView.hideProgress();
             loginView.startNewActivity();
+        }
+    }
+
+    @Override
+    public void onGetUserName(String name) {
+        if(loginView!=null){
+            loginView.setCheckedUserName(name);
+        }
+    }
+
+    @Override
+    public void onGetPwd(String pwd) {
+        if(loginView!=null){
+            loginView.setCheckedPassword(pwd);
+        }
+    }
+
+    @Override
+    public void onGetCheckedButton(boolean checkedBtn) {
+        if(loginView!=null){
+            loginView.setCheckedButton(checkedBtn);
         }
     }
 
