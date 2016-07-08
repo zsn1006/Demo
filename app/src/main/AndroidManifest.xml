@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".FraActivity">
         </activity>
+        <activity android:name=".MySqliteActivity">
+        </activity>
         <receiver android:name=".broadcastReciver.BootCompleteReceive">
             <intent-filter>
                 <action

@@ -67,6 +67,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 save(inputText.getText().toString());
+                startAty(MySqliteActivity.class);
             }
         });
     }

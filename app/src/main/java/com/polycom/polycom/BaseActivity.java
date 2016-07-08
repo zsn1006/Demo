@@ -1,6 +1,7 @@
 package com.polycom.polycom;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.polycom.polycom.utils.ActivityCollector;
@@ -20,5 +21,10 @@ public class BaseActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         ActivityCollector.removeActivity(this);
+    }
+
+    public void startAty(Class<?>cls){
+        Intent intent=new Intent(this,cls);
+        startActivity(intent);
     }
 }
