@@ -23,7 +23,7 @@ public class LoginPresenterImpl implements LoginPresenter,OnLoginFinishListener 
         if(loginView!=null){
             loginView.showProgress();
         }
-        loginModel.login(userName,pwd,checked,pref,this);
+            loginModel.login(userName,pwd,checked,pref,this);
     }
 
     @Override

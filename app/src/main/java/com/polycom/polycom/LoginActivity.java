@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -91,6 +92,7 @@ public class LoginActivity extends BaseActivity implements LoginView,View.OnClic
     @Override
     public void setCheckedPassword(String pwd) {
         password.setText(pwd);
+        Log.i("eee","pwd="+pwd);
     }
 
     @Override
