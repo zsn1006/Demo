@@ -6,4 +6,8 @@ package com.polycom.polycom.view;
 public interface SqliteView {
     void setInsertSuccess();
     void setInsertError();
+    void setUpdateSuccess();
+    void setUpdateError();
+    void setDeleteSuccess();
+    void setDeleteError();
 }

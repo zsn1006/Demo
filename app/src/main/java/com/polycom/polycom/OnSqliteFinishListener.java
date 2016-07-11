@@ -7,4 +7,8 @@ package com.polycom.polycom;
 public interface OnSqliteFinishListener {
     void onInsertSuccess();
     void onInsertError();
+    void onUpdateSuccess();
+    void onUpdateError();
+    void onDeleteSuccess();
+    void onDeleteError();
 }
