@@ -11,4 +11,6 @@ public interface OnSqliteFinishListener {
     void onUpdateError();
     void onDeleteSuccess();
     void onDeleteError();
+    void onReplaceDataSuccess();
+    void onReplaceDataError();
 }

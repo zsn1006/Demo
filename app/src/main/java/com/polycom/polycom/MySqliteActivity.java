@@ -15,11 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Administrator on 2016/7/8.
+ * Created by zsn on 2016/7/8.
  */
 public class MySqliteActivity extends BaseActivity implements SqliteView{
 
-    private Button sqliteInsertBtn,sqliteUpdateBtn,sqliteDeleteBtn;
+    private Button sqliteInsertBtn,sqliteUpdateBtn,sqliteDeleteBtn,sqliteQueryBtn,sqliteRreplaceDataBtn;
     private MyDataBaseHelper myDataBaseHelper;
     private SqlitePresenter sqlitePresenter;
 
@@ -39,9 +39,9 @@ public class MySqliteActivity extends BaseActivity implements SqliteView{
                 List<SqlBean>sqlList=new ArrayList<SqlBean>();
                 for(int i=0;i<3;i++){
                     SqlBean sqlBean=new SqlBean();
-                    sqlBean.setAuthor("小智");
-                    sqlBean.setName("无名氏");
-                    sqlBean.setPages(100);
+                    sqlBean.setAuthor("小甜甜");
+                    sqlBean.setName("狗哥");
+                    sqlBean.setPages(120);
                     sqlBean.setPrice(10.06);
                     sqlList.add(sqlBean);
                 }
@@ -60,6 +60,18 @@ public class MySqliteActivity extends BaseActivity implements SqliteView{
                 sqlitePresenter.delete(myDataBaseHelper.getWritableDatabase(), MyDataBaseHelper.TABLE_NAME_1);
             }
         });
+        sqliteQueryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sqlitePresenter.query(myDataBaseHelper.getWritableDatabase(), MyDataBaseHelper.TABLE_NAME_1);
+            }
+        });
+        sqliteRreplaceDataBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sqlitePresenter.replaceData(myDataBaseHelper.getWritableDatabase(), MyDataBaseHelper.TABLE_NAME_1);
+            }
+        });
     }
 
     private void initData() {
@@ -71,36 +83,49 @@ public class MySqliteActivity extends BaseActivity implements SqliteView{
         sqliteInsertBtn=(Button)findViewById(R.id.sqlite_insert_btn);
         sqliteUpdateBtn=(Button)findViewById(R.id.sqlite_update_btn);
         sqliteDeleteBtn=(Button)findViewById(R.id.sqlite_delete_btn);
+        sqliteQueryBtn=(Button)findViewById(R.id.sqlite_query_btn);
+        //事务
+        sqliteRreplaceDataBtn=(Button)findViewById(R.id.sqlite_replace_data_btn);
     }
 
 
     @Override
-    public void setInsertSuccess() {
+    public void setInsertSuccess(){
         ToastUtil.showToast(this,"插入成功");
     }
 
     @Override
-    public void setInsertError() {
+    public void setInsertError(){
         ToastUtil.showToast(this,"插入失败");
     }
 
     @Override
-    public void setUpdateSuccess() {
+    public void setUpdateSuccess(){
         ToastUtil.showToast(this,"更新成功");
     }
 
     @Override
-    public void setUpdateError() {
+    public void setUpdateError(){
         ToastUtil.showToast(this,"更新失败");
     }
 
     @Override
-    public void setDeleteSuccess() {
+    public void setDeleteSuccess(){
         ToastUtil.showToast(this,"删除成功");
     }
 
     @Override
     public void setDeleteError() {
         ToastUtil.showToast(this,"删除失败");
+    }
+
+    @Override
+    public void setReplaceDataSuccess(){
+        ToastUtil.showToast(this,"替换成功");
+    }
+
+    @Override
+    public void setReplaceDataError(){
+        ToastUtil.showToast(this,"替换失败");
     }
 }

@@ -14,7 +14,7 @@ public interface SqlitePresenter {
     void insert(SQLiteDatabase db,String dbName,List<SqlBean> sqlList);
     void update(SQLiteDatabase db,String dbName);
     void delete(SQLiteDatabase db, String dbName);
+    void query(SQLiteDatabase db, String dbName);
+    void replaceData(SQLiteDatabase db, String dbName);
     void onDestroy();
-
-
 }

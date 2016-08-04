@@ -4,6 +4,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,10 +15,6 @@
         <activity android:name=".MainActivity">
         </activity>
         <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".newsApp.zsn.activity.NewsContentActivity">
         </activity>
@@ -27,6 +24,12 @@
         <activity android:name=".FraActivity">
         </activity>
         <activity android:name=".MySqliteActivity">
+        </activity>
+        <activity android:name=".contentProvider.ContactActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <receiver android:name=".broadcastReciver.BootCompleteReceive">
             <intent-filter>

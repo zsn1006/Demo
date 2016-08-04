@@ -10,4 +10,6 @@ public interface SqliteView {
     void setUpdateError();
     void setDeleteSuccess();
     void setDeleteError();
+    void setReplaceDataSuccess();
+    void setReplaceDataError();
 }

@@ -17,4 +17,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="delete"/>
+    <Button
+        android:id="@+id/sqlite_query_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="query"/>
+    <Button
+        android:id="@+id/sqlite_replace_data_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="replace"/>
 </LinearLayout>

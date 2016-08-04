@@ -14,4 +14,6 @@ public interface SqliteModel {
     void insert(SQLiteDatabase db,String tableName,OnSqliteFinishListener onSqliteFinishListener,List<SqlBean> sqlList);
     void update(SQLiteDatabase db,String tableName,OnSqliteFinishListener onSqliteFinishListener);
     void delete(SQLiteDatabase db, String dbName, OnSqliteFinishListener onSqliteFinishListener);
+    void query(SQLiteDatabase db, String dbName, OnSqliteFinishListener onSqliteFinishListener);
+    void replaceData(SQLiteDatabase db, String dbName, OnSqliteFinishListener onSqliteFinishListener);
 }
