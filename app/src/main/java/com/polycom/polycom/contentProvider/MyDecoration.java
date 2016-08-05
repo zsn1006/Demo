@@ -18,6 +18,7 @@ public class MyDecoration extends RecyclerView.ItemDecoration {
     private int mOrientation;
     public static final int HORIZONTAL_LIST= LinearLayoutManager.HORIZONTAL;
     public static final int VERTICAL_LIST= LinearLayoutManager.VERTICAL;
+    //我们通过获取系统属性中的listDivider来添加，在系统中的AppTheme中设置
     public static final int[]AtRRS=new int[]{
             android.R.attr.listDivider
     };
@@ -60,11 +61,11 @@ public class MyDecoration extends RecyclerView.ItemDecoration {
             mDivider.draw(c);
         }
     }
-
+    //画横线, 这里的parent其实是显示在屏幕显示的这部分
     public void drawHorizontal(Canvas c, RecyclerView parent) {
         final int top = parent.getPaddingTop();
         final int bottom = parent.getHeight() - parent.getPaddingBottom();
-
+        //获得child的布局信息
         final int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
             final View child = parent.getChildAt(i);
@@ -76,7 +77,7 @@ public class MyDecoration extends RecyclerView.ItemDecoration {
             mDivider.draw(c);
         }
     }
-
+    //由于Divider也有长宽高，每一个Item需要向下或者向右偏移
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         if(mOrientation == HORIZONTAL_LIST){

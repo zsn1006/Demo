@@ -3,6 +3,7 @@ package com.polycom.polycom.contentProvider;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,6 +23,8 @@ public class ContactActivity extends BaseActivity{
     private ArrayList<String> mList;
     private RecyclerAdapter mRecyclerAdapter;
     private ArrayList<String> contactsList;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
+    private LinearLayoutManager mLinearLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +35,9 @@ public class ContactActivity extends BaseActivity{
         KLog.a("zsn", "呵呵呵");
         KLog.e("zsn", "错误");
         KLog.v("zsn", "哎哟………");
-        KLog.w("zsn","警告----------------------");
+        KLog.w("zsn", "警告----------------------");
         initView();
+        initListener();
         readContacts();
         //initData();
         mRecyclerAdapter=new RecyclerAdapter(this,contactsList);
@@ -46,6 +50,24 @@ public class ContactActivity extends BaseActivity{
         mRecyclerView.addItemDecoration(new MyDecoration(this,MyDecoration.VERTICAL_LIST));
     }
 
+    private void initListener() {
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                contactsList.add(0,"嘿，我是“下拉刷新”生出来的");
+                //数据重新加载完成后，提示数据发生改变，并且设置现在不在刷新
+                mRecyclerAdapter.notifyDataSetChanged();
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
+        mRecyclerView.addOnScrollListener(new EndLessOnScrollListener(mLinearLayoutManager) {
+            @Override
+            public void onLoadMore(int currentPage) {
+                loadMoreData(currentPage);
+            }
+        });
+    }
+
     private void setHeaderView(RecyclerView view){
         View header = LayoutInflater.from(this).inflate(R.layout.header, view, false);
         mRecyclerAdapter.setmHeaderView(header);
@@ -55,12 +77,12 @@ public class ContactActivity extends BaseActivity{
         View footer = LayoutInflater.from(this).inflate(R.layout.footer, view, false);
         mRecyclerAdapter.setmFooterView(footer);
     }
-    private void initData() {
+    /*private void initData() {
         mList = new ArrayList<String>();
         for (int i = 0; i < 20; i++){
             mList.add("item" + i);
         }
-    }
+    }*/
     private void readContacts() {
         contactsList = new ArrayList<String>();
         Cursor cursor = null;
@@ -86,9 +108,17 @@ public class ContactActivity extends BaseActivity{
             }
         }
     }
+    private void loadMoreData(int currentPage) {
+        KLog.w("zsn", "currentPage: " + currentPage);
+        for (int i =0; i < 10; i++){
+            contactsList.add("嘿，我是“上拉加载”生出来的"+i);
+            mRecyclerAdapter.notifyDataSetChanged();
+        }
+    }
     private void initView() {
         mRecyclerView = (RecyclerView)findViewById(R.id.contact_recycler_view);
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mLinearLayoutManager=new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLinearLayoutManager);
+        mSwipeRefreshLayout=(SwipeRefreshLayout)findViewById(R.id.layout_swipe_refresh);
     }
 }
