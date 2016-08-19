@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.polycom.polycom">
+    <permission
+        android:name="com.polycom.polycom.contentProvider.permRead"
+        android:description="@string/permission_desc"
+        android:label="@string/permission_label"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.polycom.polycom.contentProvider.permRead" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
@@ -12,6 +18,13 @@
         android:supportsRtl="true"
         android:name=".MyApplication"
         android:theme="@style/AppTheme">
+        <provider
+            android:authorities="com.polycom.polycom.contentProvider.provider"
+            android:name=".contentProvider.MyContentProvider"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:readPermission="com.polycom.polycom.contentProvider.permRead"
+            ></provider>
         <activity android:name=".MainActivity">
         </activity>
         <activity android:name=".LoginActivity">
@@ -24,12 +37,12 @@
         <activity android:name=".FraActivity">
         </activity>
         <activity android:name=".MySqliteActivity">
-        </activity>
-        <activity android:name=".contentProvider.ContactActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".contentProvider.ContactActivity">
         </activity>
         <receiver android:name=".broadcastReciver.BootCompleteReceive">
             <intent-filter>
@@ -56,6 +69,7 @@
                 <action android:name="com.polycom.polycom.FORCE_OFFLINE"/>
             </intent-filter>
         </receiver>
+
     </application>
 
 </manifest>

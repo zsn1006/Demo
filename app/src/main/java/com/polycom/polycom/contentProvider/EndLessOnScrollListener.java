@@ -44,8 +44,14 @@ public abstract class EndLessOnScrollListener extends RecyclerView.OnScrollListe
                 isLoading = false;
                 previousTotal = totalItemCount;
             }
-
         }
+        KLog.w("zsn", "------firstVisibleItem----------: " + firstVisibleItem);
+        KLog.w("zsn", "------totalPageCount----------: " + totalItemCount);
+        KLog.w("zsn", "------visibleItemCount--------: " + visibleItemCount);
+        KLog.w("zsn", "------previousTotal--------: " + previousTotal);
+        KLog.w("zsn", "------isLoading--------: " + isLoading);
+        boolean result= totalItemCount - visibleItemCount <= firstVisibleItem;
+        KLog.w("zsn", "------差值--------: " + result);
         if (!isLoading && totalItemCount - visibleItemCount <= firstVisibleItem) {
             currentPage++;
             onLoadMore(currentPage);

@@ -4,8 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.polycom.polycom.utils.ToastUtil;
-
 /**
  * Created by zsn on 2016/7/8.
  */
@@ -30,7 +28,8 @@ public class MyDataBaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_BOOK);
         db.execSQL(CREATE_CATEGORY);
-        ToastUtil.showToast(mContext,"Create succeeded");
+        //跨程序访问时我们不能直接使用 Toast
+        //ToastUtil.showToast(mContext,"Create succeeded");
     }
 
     @Override
