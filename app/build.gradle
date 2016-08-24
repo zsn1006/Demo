@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 22
     buildToolsVersion "23.0.2"
 
     defaultConfig {
         applicationId "com.polycom.polycom"
         minSdkVersion 14
-        targetSdkVersion 23
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
     }
@@ -34,9 +34,9 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.3.0'
-    compile 'com.android.support:recyclerview-v7:23.0.+'
-    compile 'com.android.support:design:23.0.+'
+    compile 'com.android.support:appcompat-v7:22.0.+'
+    compile 'com.android.support:recyclerview-v7:22.0.+'
+    compile 'com.android.support:design:22.2.+'
     compile 'com.github.zhaokaiqiang.klog:library:1.5.0'
     compile files('libs/sun.misc.BASE64Decoder.jar')
 }

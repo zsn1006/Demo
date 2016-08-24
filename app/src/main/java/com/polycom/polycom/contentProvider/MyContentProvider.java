@@ -19,6 +19,7 @@ public class MyContentProvider extends ContentProvider {
     public static final int BOOK_ITEM=1;
     public static final int CATEGORY_DIR=2;
     public static final int CATEGORY_ITEM=3;
+    //public static final int CATEGORY_ITEM=4;
     public static final String AUTHORITY="com.polycom.polycom.contentProvider.provider";
     private static UriMatcher uriMatcher;
     private MyDataBaseHelper dbHelper;

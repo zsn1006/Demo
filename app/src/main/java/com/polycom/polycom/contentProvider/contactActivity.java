@@ -18,7 +18,7 @@ import java.util.ArrayList;
 /**
  * Created by zsn on 2016/7/29.
  */
-public class ContactActivity extends BaseActivity{
+public class contactActivity extends BaseActivity{
     private RecyclerView mRecyclerView;
     private ArrayList<String> mList;
     private RecyclerAdapter mRecyclerAdapter;
@@ -54,13 +54,13 @@ public class ContactActivity extends BaseActivity{
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                contactsList.add(0,"嘿，我是“下拉刷新”生出来的");
+                contactsList.add(0, "嘿，我是“下拉刷新”生出来的");
                 //数据重新加载完成后，提示数据发生改变，并且设置现在不在刷新
                 mRecyclerAdapter.notifyDataSetChanged();
                 mSwipeRefreshLayout.setRefreshing(false);
             }
         });
-        mRecyclerView.addOnScrollListener(new EndLessOnScrollListener(mLinearLayoutManager) {
+        mRecyclerView.setOnScrollListener(new EndLessOnScrollListener(mLinearLayoutManager) {
             @Override
             public void onLoadMore(int currentPage) {
                 loadMoreData(currentPage);

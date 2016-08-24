@@ -1,7 +1,7 @@
 package com.polycom.polycom;
 
 
-import android.content.Context;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -16,7 +16,7 @@ public class RightFragment extends Fragment {
     private static final String  TAG="RightFragment";
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(Activity context) {
         super.onAttach(context);
         Log.d(TAG,"onAttach");
     }

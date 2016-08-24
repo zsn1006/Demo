@@ -1,6 +1,6 @@
 package com.polycom.polycom.newsApp.zsn.fragment;
 
-import android.content.Context;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -28,7 +28,7 @@ public class NewsTitleFragment extends Fragment implements AdapterView.OnItemCli
     private boolean isTwoPane;
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(Activity context) {
         super.onAttach(context);
         newsList=getNews();
         adapter=new NewsAdapter(context, R.layout.news_item,newsList);
