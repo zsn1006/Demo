@@ -4,17 +4,21 @@ import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.Service;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
 import com.polycom.polycom.R;
 import com.polycom.polycom.utils.VersionUtils;
+import com.polycom.polycom.utils.VolumeUtils;
 
 /**
  * Created by zsn on 2016/8/23.
@@ -23,13 +27,17 @@ public class NotificationActivity extends Activity implements View.OnClickListen
     private static final int NOTIFICATION_ID = 1000;
     private Button sendNoticeBtn;
     private int apiLevel;
+    private AudioManager mAudioManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
+        //sdk版本和api版本
         apiLevel=VersionUtils.getAPIVersion();
         String sdkVersion = VersionUtils.getSdkVersion();
+        //音量控制,初始化定义
+        mAudioManager = (AudioManager)getSystemService(Service.AUDIO_SERVICE);
 
         Log.i("zsn","apiLevel==="+apiLevel);
         Log.i("zsn","sdkVersion==="+sdkVersion);
@@ -48,11 +56,16 @@ public class NotificationActivity extends Activity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.send_notice:
+                //设置多媒体音量
+                VolumeUtils.setMyVolume(mAudioManager);
+                //发送通知
                 NotificationManager notificationManager= (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
                 sendNotification(notificationManager,apiLevel);
                 break;
         }
     }
+
+
 
     /**
      * 发送通知 alt+shift+m
@@ -118,7 +131,7 @@ public class NotificationActivity extends Activity implements View.OnClickListen
         build.setVibrate(new long[]{0, 100, 500, 100});//振动效果需要振动权限
 
         build.setSound(Uri.parse("android.resource://" + getPackageName()//声音  
-                + "/" + R.raw.incomingcall));
+                + "/" + R.raw.dddw));
 
         build.setDefaults(NotificationCompat.DEFAULT_SOUND); //声音
         build.setDefaults(NotificationCompat.DEFAULT_LIGHTS); //指示灯
@@ -133,5 +146,30 @@ public class NotificationActivity extends Activity implements View.OnClickListen
             notification=build.build();
         }
         notificationManager.notify(NOTIFICATION_ID,notification);
+    }
+    @Override
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        switch(keyCode) {
+
+            case KeyEvent.KEYCODE_VOLUME_UP:
+
+                mAudioManager.adjustStreamVolume(AudioManager.STREAM_RING , AudioManager.ADJUST_RAISE,
+                        AudioManager.FLAG_PLAY_SOUND | AudioManager.FLAG_SHOW_UI);
+                return true;
+
+            case KeyEvent.KEYCODE_VOLUME_DOWN:
+
+                mAudioManager.adjustStreamVolume(AudioManager.STREAM_RING , AudioManager.ADJUST_LOWER,
+                        AudioManager.FLAG_PLAY_SOUND | AudioManager.FLAG_SHOW_UI);
+                return true;
+
+            default:
+                break;
+
+        }
+        return super.onKeyDown(keyCode, event);
+
     }
 }
